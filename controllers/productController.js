@@ -62,7 +62,7 @@ const addProduct = async(req, res) => {
 
 const updateProduct = async(req, res) => {
     try {
-        const productExist = await product.findOne({ productCode: req.body.productCode, productName: req.body.productCode, _id: { $ne: req.params.id } });
+        const productExist = await product.findOne({ productCode: req.body.productCode, productName: req.body.productName, _id: { $ne: req.params.id } });
         if (productExist) {
             return res.status(200).json({ message: "Product Details Already Exists" });
         } else {
