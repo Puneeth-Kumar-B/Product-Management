@@ -6,7 +6,7 @@ const Joi = require('joi')
 const productValidations = Joi.object({
     productName: Joi.string().required().min(3),
 
-    productCode: Joi.number().required(),
+    productCode: Joi.string().required(),
 
     dosageForm: Joi.string().required().min(3),
 
@@ -90,8 +90,7 @@ const Validations = async(req, res, next) => {
         visibility: req.body.visibility,
         pap: req.body.pap,
         papOffer: req.body.papOffer,
-        abcd: req.body.abcd,
-        uploadImages: req.body.uploadImages
+        abcd: req.body.abcd
     }
 
     let { error } = await productValidations.validate(Product, { abortEarly: false });
