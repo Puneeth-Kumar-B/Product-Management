@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const productSchema = new Schema({
     productName: { type: String, unique: true },
 
-    productCode: { type: Number, unique: true },
+    productCode: { type: String, unique: true },
 
     dosageForm: { type: String },
 
@@ -53,7 +53,7 @@ const productSchema = new Schema({
 
     pap: { type: Boolean },
 
-    papOffer: { type: String }, //(appears only if PAP is true)   
+    papOffer: { type: String }, //(should appear only if PAP is true)   
 
     abcd: { type: String },
 
