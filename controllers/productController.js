@@ -39,8 +39,7 @@ const addProduct = async(req, res) => {
                 visibility: req.body.visibility,
                 pap: req.body.pap,
                 papOffer: req.body.papOffer,
-                abcd: req.body.abcd,
-                uploadImages: req.body.uploadImages
+                abcd: req.body.abcd
             }
             if (!req.body.pap) {
                 delete createBody.papOffer
@@ -94,8 +93,7 @@ const updateProduct = async(req, res) => {
                     visibility: req.body.visibility,
                     pap: req.body.pap,
                     papOffer: req.body.papOffer,
-                    abcd: req.body.abcd,
-                    uploadImages: req.body.uploadImages
+                    abcd: req.body.abcd
                 }
             }, { new: true });
             return res.status(200).json({ message: 'Product details updated', updated_product });
@@ -187,7 +185,7 @@ const searchProduct = async(req, res) => {
     results.products = await product.find({
         $or: [
             { productName: { $regex: `${search}`, $options: "i" } },
-            { productCode: search }
+            { productCode: { $regex: `${search}`, $options: "i" } }
         ]
     }).sort({ productName: 1 }).limit(limit).skip(start).exec()
 
